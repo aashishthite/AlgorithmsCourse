@@ -1,0 +1,2 @@
+helloMake: h2.cpp
+	g++ -o h2 h2.cpp

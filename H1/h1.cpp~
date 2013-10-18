@@ -1,0 +1,44 @@
+#include<iostream>
+
+using namespace std;
+
+int main(int argc, char** argv)
+{
+	long n;
+	while(cin>>n)
+	{
+		if(n>0)
+		{
+			//save the array
+			//vector<long> aa;
+			long * ptr = new long[n];
+			//long * b = new long[n];
+			for(int i = 0; i < n; ++i)
+			{
+				cin >> ptr[i];
+			}			
+			long countSwaps = 0;
+			for(long ii = 0; ii< n; ++ii)
+			{
+				for(long jj = 0; jj< n-ii-1; ++jj)
+				{
+					long a = ptr[jj], b = ptr[jj+1];
+					if(a>b)
+					{
+						ptr[jj]=b;
+						ptr[jj+1]=a;
+						countSwaps++;						
+					}
+				}
+			}
+			cout << countSwaps << endl;
+			delete[] ptr;
+				
+		}
+		else
+		{
+			break;
+		}
+	}
+	return 0;
+}
