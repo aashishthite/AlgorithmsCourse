@@ -136,17 +136,26 @@ public class Main{
 					//System.out.println("tempFlow: "+ tempFlow);
 					if(tempFlow < totFlow)
 						answers.add(new Answer((char)(temp.ii+'A'),temp.jj));
-					//graph[temp.ii][temp.jj] = 1;
+					graph[temp.ii+1][temp.jj+n] = 1;
 					//System.out.print(matches.size() +" " + ii);
 
 				}
 				//System.out.println(answers.size());
+				ii=0;
 				if(answers.size()>0)
-				for(Answer ans:answers)
-					System.out.print("("+ans.c+","+ans.n+") ");
+				{
 					
+					for(Answer ans:answers)
+					{	
+						ii++;
+						if(ii<answers.size())
+							System.out.print("("+ans.c+","+ans.n+") ");
+						else
+							System.out.print("("+ans.c+","+ans.n+")");
+					}
+				}					
 				else
-					//System.out.print("none");
+					System.out.print("none");
 			System.out.println("\n");
 
 			}
@@ -207,39 +216,4 @@ public class Main{
 			}
 		return maxFlow;
 	}
-	/*
-	public static void flow(int[][] graph, int s, int t, int[][] flow)
-	{
-		boolean [] visited = new boolean[graph.length];
-		while(dfs(graph,flow,s,t,visited,Integer.MAX_VALUE)>0)
-		{
-			for(int ii = 0; ii < graph.length; ii++)
-				visited[ii] = false;
-		
-		}
-	}
-	public static int dfs(int[][] graph, int[][] flow, int ii, int t, boolean[] visited, int min)
-	{
-		if(ii==t)
-			return min;
-		visited[ii]=true;
-		for(int jj = 0; jj<graph.length; jj++)
-		{
-			if(graph[ii][jj] > 0 && !visited[jj])
-			{
-				int vv = dfs(graph,flow,jj,t,visited,Math.min(min,graph[ii][jj]));
-			
-				if(vv>0)
-				{
-					graph[ii][jj]= graph[ii][jj] - vv;
-					flow[ii][jj] = flow[ii][jj] + vv;
-					graph[jj][ii] = graph[jj][ii] + vv;
-					flow[jj][ii] = flow[jj][ii] - vv;
-					return vv;
-				}
-			}
-		}
-		return 0;
-	}
-	//return 0;*/
 }
